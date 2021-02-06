@@ -1,0 +1,47 @@
+@keyframes color-blink {
+  0% {
+    color: $primary-color;
+  }
+  50% {
+    color: $secondary-color;
+  }
+  100% {
+    color: $primary-color;
+  }
+}
+
+.header {
+  width: 100%;
+  height: 8vh;
+  background-color: $background-color;
+  color: $text-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  text-transform: uppercase;
+
+  .logo {
+    &:first-child {
+      font-size: 1.3rem;
+      animation: color-blink 3s infinite ease-in;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // selecting all the links separately
+    & > * {
+      font-weight: 300;
+      padding-right: 1rem;
+      transition: color 0.15s ease-in-out;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}

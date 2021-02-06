@@ -1,0 +1,10 @@
+$primary-color: #1c9297;
+$secondary-color: #b1e0e9;
+$tertiary-color: #0c2d46;
+$background-color: #000;
+$text-color: #fff;
+
+@import './components/header/header';
+@import './pages/home-page/home-page';
+@import './pages/contact-page/contact-page';
+@import './pages/about-page/about-page';
