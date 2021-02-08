@@ -9,8 +9,8 @@ import './App.scss';
 const App = () => {
   return (
     <div className='App'>
-      <Header />
-      <Switch>
+      <Header className='header' />
+      <Switch className='page'>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={AboutPage} />
         <Route exact path='/contact' component={ContactPage} />

@@ -1,12 +1,12 @@
 @keyframes color-blink {
   0% {
-    color: $primary-color;
+    fill: $primary-color;
   }
   50% {
-    color: $secondary-color;
+    fill: $secondary-color;
   }
   100% {
-    color: $primary-color;
+    fill: $primary-color;
   }
 }
 
@@ -19,12 +19,20 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  text-transform: uppercase;
 
-  .logo {
-    &:first-child {
-      font-size: 1.3rem;
-      animation: color-blink 3s infinite ease-in;
+  .logo-container {
+    padding: 0 1rem;
+
+    .logo {
+      height: 2rem;
+      width: 2rem;
+      g {
+        g {
+          path {
+            animation: color-blink 3s infinite ease-in;
+          }
+        }
+      }
     }
   }
 

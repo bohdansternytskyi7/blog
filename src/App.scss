@@ -3,8 +3,15 @@ $secondary-color: #b1e0e9;
 $tertiary-color: #0c2d46;
 $background-color: #000;
 $text-color: #fff;
+$main-font: 'Montserrat';
 
 @import './components/header/header';
 @import './pages/home-page/home-page';
 @import './pages/contact-page/contact-page';
 @import './pages/about-page/about-page';
+@import './components/form-input/form-input';
+@import './components/custom-button/custom-button';
+
+.App {
+  background: linear-gradient(15deg, $primary-color, $secondary-color);
+}
