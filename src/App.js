@@ -4,11 +4,19 @@ import AboutPage from './pages/about-page/about-page';
 import ContactPage from './pages/contact-page/contact-page';
 import NotFound from './pages/not-found-page/not-found-page';
 import Header from './components/header/header';
+import moon from './assets/images/moon.png';
 import './App.scss';
 
 const App = () => {
   return (
     <div className='App'>
+      <div className='background'>
+        <div className='black-space' />
+        <div className='stars' />
+        <img src={moon} alt='Moon' className='moon' />
+        <div className='clouds' />
+      </div>
+
       <Header className='header' />
       <Switch className='page'>
         <Route exact path='/' component={HomePage} />

@@ -5,7 +5,7 @@
   }
   to {
     top: 300%;
-    left: 100%;
+    left: 50%;
   }
 }
 
@@ -23,10 +23,10 @@
   align-items: center;
   border: none;
   outline: none;
-  background-color: $background-color;
+  background-color: $primary-color;
   color: $text-color;
   border-radius: 0.2rem;
-  transition: all 0.1s ease-in;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     background-color: $tertiary-color;
@@ -39,9 +39,9 @@
     left: -80%;
     width: 150%;
     height: 0;
-    box-shadow: 0 0 30px 2px;
+    box-shadow: 0 0 30px 5px;
     transform: rotateZ(-30deg);
     background-color: $text-color;
-    animation: slide 3s infinite;
+    animation: slide 2.5s infinite;
   }
 }

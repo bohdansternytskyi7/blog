@@ -12,6 +12,7 @@
 
 .header {
   width: 100%;
+  min-width: 400px;
   height: 8vh;
   background-color: $background-color;
   color: $text-color;
@@ -43,7 +44,6 @@
 
     // selecting all the links separately
     & > * {
-      font-weight: 300;
       padding-right: 1rem;
       transition: color 0.15s ease-in-out;
 

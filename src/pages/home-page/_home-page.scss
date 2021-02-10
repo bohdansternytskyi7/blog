@@ -12,20 +12,18 @@
 
 .home-page {
   width: 100%;
-  padding: 1.5rem 1rem;
   display: flex;
-
-  // tmp
-  height: 92vh;
+  color: $text-color;
 
   .title {
     font-weight: 400;
     text-align: center;
-    margin: 2rem auto;
+    margin: 4rem auto;
 
     .developer {
       display: inline-block;
-      border: black 1px solid;
+      color: $text-color;
+      border: $text-color 1px solid;
       padding: 0.5rem;
       margin-left: 0.5rem;
       animation: word-box 3s infinite ease-out;

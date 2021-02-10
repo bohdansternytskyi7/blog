@@ -1,5 +1,3 @@
-// import image from '../../assets/images/blog-image-1.jpg';
-
 const HomePage = () => (
   <div className='home-page'>
     <h3 className='title'>

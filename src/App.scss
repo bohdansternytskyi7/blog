@@ -3,6 +3,7 @@ $secondary-color: #b1e0e9;
 $tertiary-color: #0c2d46;
 $background-color: #000;
 $text-color: #fff;
+$error-color: #df0000;
 $main-font: 'Montserrat';
 
 @import './components/header/header';
@@ -13,5 +14,20 @@ $main-font: 'Montserrat';
 @import './components/custom-button/custom-button';
 
 .App {
-  background: linear-gradient(15deg, $primary-color, $secondary-color);
+  position: relative;
+  min-height: 100vh;
+  @import './animations/stars-background';
+
+  // background: linear-gradient(15deg, $primary-color, $secondary-color);
+
+  // .background-image {
+  //   position: absolute;
+  //   z-index: -10;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-image: url(./assets/images/moon.jpg);
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  // }
 }
