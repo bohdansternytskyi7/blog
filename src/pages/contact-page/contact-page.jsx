@@ -1,4 +1,5 @@
 import ContactForm from '../../components/contact-form/contact-form';
+import WithSpinner from '../../components/with-spinner/with-spinner';
 
 const ContactPage = () => (
   <div className='contact-page'>
@@ -6,4 +7,4 @@ const ContactPage = () => (
   </div>
 );
 
-export default ContactPage;
+export default WithSpinner(ContactPage);

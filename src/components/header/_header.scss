@@ -11,9 +11,10 @@
 }
 
 .header {
+  position: sticky;
   width: 100%;
   min-width: 400px;
-  height: 8vh;
+  height: 60px;
   background-color: $background-color;
   color: $text-color;
   display: flex;

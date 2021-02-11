@@ -1,53 +1,49 @@
 import React from 'react';
+import { fullNameRegex, phoneRegex, emailRegex } from '../../regex';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
-import emailjs from 'emailjs-com';
+import { connect } from 'react-redux';
+import { sendEmailStartAsync } from '../../redux/email/email.actions';
 
-emailjs.init('user_WbEeGqTd042Flt6s37JGf');
+const INITIAL_STATE = {
+  fullName: '',
+  email: '',
+  phone: '',
+  message: '',
+  wrongFullName: false,
+  wrongEmail: false,
+  wrongPhone: false,
+};
 
 class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
+  state = INITIAL_STATE;
 
-    this.state = {
-      fullName: '',
-      email: '',
-      phone: '',
-      message: '',
-      errorMessage: '',
-    };
-  }
-
-  fullNameRegex = new RegExp(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/i);
-  phoneRegex = new RegExp(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/);
-  emailRegex = new RegExp(
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-  );
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      wrongFullName: false,
+      wrongEmail: false,
+      wrongPhone: false,
+    });
+
+    let allowSend = true;
     const { fullName, email, phone } = this.state;
+    if (!fullName || !fullNameRegex.test(fullName)) {
+      this.setState({ wrongFullName: true });
+      allowSend = false;
+    }
+    if (!email || !emailRegex.test(email)) {
+      this.setState({ wrongEmail: true });
+      allowSend = false;
+    }
+    if (phone && !phoneRegex.test(phone)) {
+      this.setState({ wrongPhone: true });
+      allowSend = false;
+    }
+    if (!allowSend) return;
 
-    if (!this.fullNameRegex.test(fullName)) {
-      this.setState({ errorMessage: 'Wrong full name input!' });
-      return;
-    }
-    if (!this.emailRegex.test(email)) {
-      this.setState({ errorMessage: 'Wrong email input' });
-      return;
-    }
-    if (phone && !this.phoneRegex.test(phone)) {
-      this.setState({ errorMessage: 'Wrong phone input' });
-      return;
-    }
-
-    emailjs.sendForm('service_x2c8r8w', 'template_v0igrgb', e.target).then(
-      (result) => {
-        console.log(result.text);
-      },
-      (error) => {
-        console.log(error.text);
-      },
-    );
+    this.props.sendEmailStartAsync(e.target);
+    this.setState(INITIAL_STATE);
   };
 
   handleChange = (e) => {
@@ -56,12 +52,21 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    const { fullName, email, phone, message, errorMessage } = this.state;
+    const {
+      fullName,
+      email,
+      phone,
+      message,
+      wrongFullName,
+      wrongEmail,
+      wrongPhone,
+    } = this.state;
 
     return (
       <form className='contact-form' onSubmit={this.handleSubmit}>
         <h4 className='fill-form'>Please, fill out the form...</h4>
         <FormInput
+          errorStyle={wrongFullName}
           type='text'
           name='fullName'
           value={fullName}
@@ -70,21 +75,22 @@ class ContactForm extends React.Component {
           required
         />
         <FormInput
+          errorStyle={wrongEmail}
           type='text'
           name='email'
           value={email}
           onChange={this.handleChange}
           label='Email'
           required
-        />
+        />{' '}
         <FormInput
+          errorStyle={wrongPhone}
           type='text'
           name='phone'
           value={phone}
           onChange={this.handleChange}
           label='Phone Number (optional)'
         />
-        <p className='wrong-input'>{errorMessage}</p>
         <textarea
           className='message'
           name='message'
@@ -98,4 +104,8 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm;
+const mapDispatchToProps = (dispatch) => ({
+  sendEmailStartAsync: (data) => dispatch(sendEmailStartAsync(data)),
+});
+
+export default connect(null, mapDispatchToProps)(ContactForm);

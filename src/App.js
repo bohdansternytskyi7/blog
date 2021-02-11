@@ -1,4 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectIsSending } from './redux/email/email.selectors';
 import HomePage from './pages/home-page/home-page';
 import AboutPage from './pages/about-page/about-page';
 import ContactPage from './pages/contact-page/contact-page';
@@ -7,7 +10,7 @@ import Header from './components/header/header';
 import moon from './assets/images/moon.png';
 import './App.scss';
 
-const App = () => {
+const App = ({ sendingEmail }) => {
   return (
     <div className='App'>
       <div className='background'>
@@ -21,11 +24,19 @@ const App = () => {
       <Switch className='page'>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/about' component={AboutPage} />
-        <Route exact path='/contact' component={ContactPage} />
+        <Route
+          exact
+          path='/contact'
+          render={() => <ContactPage isLoading={sendingEmail} />}
+        />
         <Route component={NotFound} />
       </Switch>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  sendingEmail: selectIsSending,
+});
+
+export default connect(mapStateToProps)(App);

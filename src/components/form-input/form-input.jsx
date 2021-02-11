@@ -1,6 +1,10 @@
-const FormInput = ({ handleChange, label, ...otherProps }) => (
+const FormInput = ({ handleChange, label, errorStyle, ...otherProps }) => (
   <div className='group'>
-    <input onChange={handleChange} className='form-input' {...otherProps} />
+    <input
+      onChange={handleChange}
+      className={`form-input ${errorStyle ? 'error' : ''}`}
+      {...otherProps}
+    />
     {label ? (
       <label
         className={`${

@@ -4,16 +4,16 @@ $tertiary-color: #0c2d46;
 $background-color: #000;
 $text-color: #fff;
 $error-color: #df0000;
-$star-color: #ffaabd;
 $main-font: 'Montserrat';
 
 @import './components/header/header';
 @import './pages/home-page/home-page';
 @import './pages/contact-page/contact-page';
+@import './components/form-input/form-input';
 @import './components/contact-form/contact-form';
 @import './pages/about-page/about-page';
-@import './components/form-input/form-input';
 @import './components/custom-button/custom-button';
+@import './components/with-spinner/with-spinner';
 
 .App {
   position: relative;

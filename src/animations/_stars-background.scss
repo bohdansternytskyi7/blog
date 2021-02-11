@@ -25,13 +25,13 @@
       @if ($i % 3 == 0) {
         $bxshadow: append(
           $bxshadow,
-          (random(1920) + 0px) (random(1080) + 0px) $secondary-color,
+          (random(1920) + 0px) (random(1080) + 0px) #b1e0e9,
           comma
         );
       } @else if ($i % 3 == 1) {
         $bxshadow: append(
           $bxshadow,
-          (random(1920) + 0px) (random(1080) + 0px) $star-color,
+          (random(1920) + 0px) (random(1080) + 0px) #ffaabd,
           comma
         );
       } @else {
@@ -45,7 +45,7 @@
     @return unquote($bxshadow);
   }
 
-  $bxshadow: box-shadow(300);
+  $bxshadow: box-shadow(400);
 
   .stars {
     position: absolute;
@@ -93,9 +93,9 @@
 
   .clouds {
     background: url(../assets/images/clouds-purple.png) repeat center center;
-    opacity: 0.5;
+    opacity: 0.25;
     z-index: -5;
-    animation: move-clouds-back 200s linear infinite;
+    animation: move-clouds-back 120s linear alternate infinite;
   }
 
   @keyframes move-clouds-back {
@@ -103,7 +103,7 @@
       background-position: 0 0;
     }
     to {
-      background-position: 10000px 0;
+      background-position: 7000px 0;
     }
   }
 }
