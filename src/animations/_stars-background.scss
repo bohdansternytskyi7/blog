@@ -25,19 +25,19 @@
       @if ($i % 3 == 0) {
         $bxshadow: append(
           $bxshadow,
-          (random(1920) + 0px) (random(1080) + 0px) #b1e0e9,
+          (random(100) + 0vw) (random(100) + 0vh) #b1e0e9,
           comma
         );
-      } @else if ($i % 3 == 1) {
+      } @else if ($i vw 3 == 1) {
         $bxshadow: append(
           $bxshadow,
-          (random(1920) + 0px) (random(1080) + 0px) #ffaabd,
+          (random(100) + 0vw) (random(100) + 0vh) #ffaabd,
           comma
         );
       } @else {
         $bxshadow: append(
           $bxshadow,
-          (random(1920) + 0px) (random(1080) + 0px) #fff,
+          (random(100) + 0vw) (random(100) + 0vh) #fff,
           comma
         );
       }
@@ -92,7 +92,8 @@
   }
 
   .clouds {
-    background: url(../assets/images/clouds-purple.png) repeat center center;
+    background: url(../assets/images/clouds-purple.png) repeat center
+      center/cover;
     opacity: 0.25;
     z-index: -5;
     animation: move-clouds-back 120s linear alternate infinite;

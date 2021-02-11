@@ -1,4 +1,3 @@
-import { createStore } from 'redux';
 import { createSelector } from 'reselect';
 
 const selectEmail = (state) => state.email;
@@ -8,7 +7,7 @@ export const selectIsSending = createSelector(
   (email) => email.isSending,
 );
 
-export const selectSentSuccessfully = createSelector(
+export const selectResponseMessage = createSelector(
   [selectEmail],
-  (email) => email.sentSuccessfully,
+  (email) => email.responseMessage,
 );

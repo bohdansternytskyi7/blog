@@ -1,9 +1,12 @@
 import EmailActionTypes from './email.types';
 
+const successMsg =
+  'Your message was successfully sent with the fastest space mail delivery🚀';
+const failureMsg = "Couldn't send your message 💩";
+
 const INITIAL_STATE = {
   isSending: false,
-  sentSuccessfully: false,
-  errorMessage: '',
+  responseMessage: '',
 };
 
 const emailReducer = (state = INITIAL_STATE, action) => {
@@ -18,14 +21,13 @@ const emailReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSending: false,
-        sentSuccessfully: true,
+        responseMessage: successMsg,
       };
     case EmailActionTypes.SEND_EMAIL_FAILURE:
       return {
         ...state,
         isSending: false,
-        sentSuccessfully: false,
-        errorMessage: action.payload,
+        responseMessage: failureMsg,
       };
     default:
       return state;
